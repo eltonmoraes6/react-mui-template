@@ -1,24 +1,35 @@
-import logo from './logo.svg';
+import jwtDecode from 'jwt-decode';
+import React, { useEffect } from 'react';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './App.css';
+import Layout from './Layout';
+import { Views } from './utils';
+
+import { setCurrentUser } from './redux/actions/userActions';
+import store from './redux/store';
+import { BrowserRouter, Navigate } from 'react-router-dom';
+
+const theme = createTheme();
 
 function App() {
+  useEffect(() => {
+    const data = localStorage.getItem('accessToken');
+    if (data) {
+      // Decode Auth Token and Get User Info and Exp
+      const decoded = jwtDecode(data);
+      //Set User and isAuthenticated
+      store.dispatch(setCurrentUser(decoded));
+    }
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Layout>
+          <Views />
+        </Layout>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
