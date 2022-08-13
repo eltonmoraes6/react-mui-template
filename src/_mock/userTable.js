@@ -3,7 +3,7 @@ const headCells = [
     id: 'name',
     numeric: false,
     disablePadding: true,
-    label: 'Dessert (100g serving)',
+    label: 'Name',
   },
   {
     id: 'company',
@@ -15,7 +15,7 @@ const headCells = [
     id: 'role',
     numeric: false,
     disablePadding: false,
-    label: 'role',
+    label: 'Role',
   },
   {
     id: 'isVerified',
@@ -27,7 +27,7 @@ const headCells = [
     id: 'status',
     numeric: false,
     disablePadding: false,
-    label: 'status',
+    label: 'Status',
   },
 ];
 
@@ -60,6 +60,34 @@ const rows = [
     isVerified: true,
     status: 'Banned',
   },
+  {
+    name: 'Andy Renner',
+    company: 'Swaniawski and Sons',
+    role: '	Backend Developer',
+    isVerified: true,
+    status: 'Active',
+  },
+  {
+    name: 'Benny Ferry',
+    company: 'Stroman - Larson',
+    role: 'Front End Developer',
+    isVerified: true,
+    status: 'Active',
+  },
+  {
+    name: 'Caroline Turcotte',
+    company: 'Mosciski - Crooks',
+    role: '	UI Designer',
+    isVerified: true,
+    status: 'Active',
+  },
+  {
+    name: 'Cary Fadel',
+    company: 'Stroman - Larson',
+    role: 'Leader',
+    isVerified: true,
+    status: 'Banned',
+  },
 ];
-
+export default { rows, headCells };
 export { rows, headCells };

@@ -12,11 +12,13 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { Link } from 'react-router-dom';
 import { MenuList } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/actions/userActions';
+import Auth from '../../utils/auth';
 
 export default function AccountMenu() {
   const dispatch = useDispatch();
+  const isAuth = Auth();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -81,33 +83,44 @@ export default function AccountMenu() {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuList>
-          <MenuItem component={Link} to='/profile'>
-            <Avatar /> Profile
-          </MenuItem>
-          <MenuItem>
-            <Avatar /> My account
-          </MenuItem>
-          <Divider />
-          <MenuItem>
-            <ListItemIcon>
-              <PersonAdd fontSize='small' />
-            </ListItemIcon>
-            Add another account
-          </MenuItem>
-          <MenuItem>
-            <ListItemIcon>
-              <Settings fontSize='small' />
-            </ListItemIcon>
-            Settings
-          </MenuItem>
-          <MenuItem onClick={handleLogout}>
-            <ListItemIcon>
-              <Logout fontSize='small' />
-            </ListItemIcon>
-            Logout
-          </MenuItem>
-        </MenuList>
+        {!isAuth ? (
+          <MenuList>
+            <MenuItem component={Link} to='/login'>
+              <Avatar /> Sign In
+            </MenuItem>
+            <MenuItem component={Link} to='/register'>
+              <Avatar /> Sign Up
+            </MenuItem>
+          </MenuList>
+        ) : (
+          <MenuList>
+            <MenuItem component={Link} to='/profile'>
+              <Avatar /> Profile
+            </MenuItem>
+            <MenuItem>
+              <Avatar /> My account
+            </MenuItem>
+            <Divider />
+            <MenuItem>
+              <ListItemIcon>
+                <PersonAdd fontSize='small' />
+              </ListItemIcon>
+              Add another account
+            </MenuItem>
+            <MenuItem>
+              <ListItemIcon>
+                <Settings fontSize='small' />
+              </ListItemIcon>
+              Settings
+            </MenuItem>
+            <MenuItem onClick={handleLogout}>
+              <ListItemIcon>
+                <Logout fontSize='small' />
+              </ListItemIcon>
+              Logout
+            </MenuItem>
+          </MenuList>
+        )}
       </Menu>
     </React.Fragment>
   );

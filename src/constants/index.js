@@ -1,3 +1,5 @@
 import images from './images';
+import icons from './icons';
 
-export { images };
+export default { icons, images };
+export { icons, images };

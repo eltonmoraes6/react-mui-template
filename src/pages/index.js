@@ -1,3 +1,5 @@
+import Account from './Account';
+import AddCustomer from './AddCustomer';
 import Chart from './Chart';
 import Copyright from './Copyright';
 import Customer from './Customer';
@@ -12,6 +14,8 @@ import Title from './Title';
 import User from './User';
 
 export {
+  Account,
+  AddCustomer,
   Chart,
   Copyright,
   Customer,

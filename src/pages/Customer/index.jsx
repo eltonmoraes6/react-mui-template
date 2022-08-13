@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
-import { PageTitle } from '../../Components';
+import { ListToolbar, PageTitle } from '../../Components';
 import { rows } from '../../_mock/userTable';
 import EnhancedTableToolbar from './EnhancedTableToolbar';
 import EnhancedTableHead from './EnhancedTableHead';
@@ -112,7 +112,7 @@ export default function EnhancedTable() {
     <Container component='main'>
       <Box
         sx={{
-          marginTop: 8,
+          // marginTop: 8,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -120,7 +120,12 @@ export default function EnhancedTable() {
         }}
       >
         <PageTitle title='Profile' />
-
+        <ListToolbar
+          style={{ width: '100%', marginBottom: '10px' }}
+          title='Customers'
+          buttonText='Add Customers'
+          goTo='/add-customers'
+        />
         <Paper sx={{ width: '100%', mb: 2 }}>
           <EnhancedTableToolbar numSelected={selected.length} />
           <TableContainer>

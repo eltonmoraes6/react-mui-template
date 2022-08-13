@@ -36,3 +36,19 @@ Install dependencies: `npm install`
 ```
 Start the project: `npm start`
 ```
+
+## consuming api:
+
+You can use my [node-start-project](https://github.com/eltonmoraes6/node-start-project) by Cloninc the repo: `git clone git@github.com:eltonmoraes6/node-start-project.git`
+
+In the project directory:
+
+```
+Install dependencies: `npm install`
+```
+
+and
+
+```
+Start the project: `npm start`
+```

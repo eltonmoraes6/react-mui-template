@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { Dashboard, NotFound, SignIn, SignUp, User } from '../../pages';
+import { Dashboard, NotFound, Pricing, SignIn, SignUp } from '../../pages';
 import PrivateRoutes from '../PrivateRoutes';
 
 import Auth from '../auth';
@@ -11,7 +11,7 @@ const Views = () => {
     <Routes>
       <Route path='/login' element={!isAuth ? <SignIn /> : <Dashboard />} />
       <Route path='/register' element={!isAuth ? <SignUp /> : <Dashboard />} />
-      <Route path='/profile' element={<User />} />
+      <Route path='/' element={<Pricing />} />
       <Route path='/*' element={<NotFound />} />
       <Route element={<PrivateRoutes />}>
         {privateRoutes.map(({ path, element }, key) => (

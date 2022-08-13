@@ -16,13 +16,15 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { AccountMenu } from '../Components';
+import { Link } from 'react-router-dom';
+
 import {
   mainListItems,
   secondaryListItems,
   tertiaryListItems,
 } from '../constants/listItems';
 import { Copyright } from '../pages';
-
+import { Logo } from './logo';
 import Auth from '../utils/auth';
 
 const drawerWidth = 240;
@@ -104,14 +106,24 @@ export default function DashboardContent(props) {
               <MenuIcon />
             </IconButton>
             <Typography
-              component='h1'
+              component={Link}
+              to='/'
               variant='h6'
               color='inherit'
               noWrap
-              sx={{ flexGrow: 1 }}
+              sx={{ flexGrow: 1, textDecoration: 'none' }}
             >
               Logo
             </Typography>
+            <Link to='/' style={{ flexGrow: 1 }}>
+              <Logo
+                sx={{
+                  height: 42,
+                  width: 42,
+                  margin: '10px 0px 0px 16px',
+                }}
+              />
+            </Link>
             <IconButton color='inherit'>
               <Badge badgeContent={4} color='secondary'>
                 <NotificationsIcon />
@@ -121,18 +133,30 @@ export default function DashboardContent(props) {
           </Toolbar>
         </AppBar>
         <Drawer variant='permanent' open={open}>
-          <Toolbar
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'flex-end',
-              px: [1],
-            }}
-          >
-            <IconButton onClick={toggleDrawer}>
-              <ChevronLeftIcon />
-            </IconButton>
-          </Toolbar>
+          <div style={{ display: 'flex' }}>
+            <Link to='/' style={{ flexGrow: 1 }}>
+              <Logo
+                sx={{
+                  height: 42,
+                  width: 42,
+                  margin: '10px 0px 0px 16px',
+                }}
+              />
+            </Link>
+            <Toolbar
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'flex-end',
+                px: [1],
+              }}
+            >
+              <IconButton onClick={toggleDrawer}>
+                <ChevronLeftIcon />
+              </IconButton>
+            </Toolbar>
+          </div>
+
           <Divider />
           <List component='nav'>
             {isAuth ? (
@@ -160,9 +184,7 @@ export default function DashboardContent(props) {
         >
           <Toolbar />
           <Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}>
-              {props.children}
-            </Grid>
+            <Grid container>{props.children}</Grid>
             <Copyright sx={{ pt: 4 }} />
           </Container>
         </Box>

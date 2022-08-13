@@ -16,6 +16,8 @@ export default function DashboardContent() {
             display: 'flex',
             flexDirection: 'column',
             height: 240,
+            marginBottom: '10px',
+            marginRight: '10px',
           }}
         >
           <Chart />
